@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Control Panel";
 }
+<h1 class="container">@ViewData["Title"]</h1>
+<div class="container">
+    <ul>
+        <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="Home">Home</a></li>
+        <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="Projects">Projects</a></li>
+        <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="AboutMe">About Me</a></li>
+        <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="ContactMe">Contact Me</a></li>
+        <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="PrivacyPolicy">Privacy</a></li>
+    </ul>
+</div>
+

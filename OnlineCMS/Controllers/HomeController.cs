@@ -6,25 +6,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using OnlineCMS.Data;
 
 namespace OnlineCMS.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
         {
             _logger = logger;
+            _db = dbContext;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var page = _db.Pages.FirstOrDefault(x => x.Title == "Home");
+            return View(page);
         }
 
         public IActionResult Privacy()
         {
+            var page = _db.Pages.FirstOrDefault(x => x.Title == "PrivacyPolicy");
             return View();
         }
 
