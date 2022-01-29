@@ -6,16 +6,43 @@
     ViewData["Title"] = "Home Page";
 }
 @Html.Raw(Model.Content)
-<hr 0style="border: 1px dotted #FEA82F" />
-@{
-    List<Blog> blogs = _db.Blogs.ToList();
-    foreach (var blog in blogs.)
-    {
-        <li>
-            <a asp-controller="Admin" asp-action="EditBlog" asp-route-blogId=@blog.Id>
-                @blog.Title
-            </a>
-        </li>
+<hr style="border: 1px dotted #FEA82F" />
+<H2>My Blogs</H2>
+<div class="container" id="BlogsItems">
+    @{
+        List<Blog> blogs = _db.Blogs.ToList();
+        foreach (var blog in blogs)
+        {
+            <div class="container border mb-2"> 
+                <h3>@blog.Title</h3>
+                <div class="collapse readmore" id="@blog.Id" aria-expanded="false">
+                    @Html.Raw(blog.BlogContent)
+                </div>
+                <div>
+                    <a class="btn btn-primary" asp-controller="Home" asp-action="Blog" asp-route-blogId=@blog.Id>
+                        read more
+                    </a>
+                </div>
+            </div>
+        }
+        // TODO add blogs to home
     }
-    // TODO add blogs to home
+</div>
+
+@section Scripts
+{
+    <style>
+        #BlogsItems {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        #BlogsItems .readmore.collapse:not(.show) {
+            display: block;
+            height: 3rem;
+            overflow: hidden;
+        }
+        #BlogsItems .readmore.collapsing {
+            height: 3rem;
+        }
+    </style>
 }

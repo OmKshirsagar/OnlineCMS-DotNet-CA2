@@ -33,11 +33,10 @@ namespace OnlineCMS.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Blog(int id)
+        public IActionResult Blog(int blogId)
         {
-            var page = _db.Blogs.FirstOrDefault(x => x.Id == id);
-            return View(page);
+            var blog = _db.Blogs.FirstOrDefault(x => x.Id == blogId);
+            return View(blog);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
