@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -52,5 +53,38 @@ namespace OnlineCMS.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult CreateBlog()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> EditBlog(int blogId)
+        {
+            var blog = await _db.Blogs.FirstOrDefaultAsync(x => x.Id == blogId);
+            if (blog == null)
+            {
+                return View("Error");
+            }
+
+            return View(blog);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveBlog(int? id, string blogTitle, string blogcontent)
+        {
+            var blog = await _db.Blogs.FirstOrDefaultAsync(x => x.Id == id);
+            if (blog == null)
+            {
+                blog = new Blog();
+            }
+
+            blog.Title = blogTitle;
+            blog.BlogContent = blogcontent;
+            blog.CreatedDate = DateTime.Now;
+            _db.Blogs.Update(blog);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

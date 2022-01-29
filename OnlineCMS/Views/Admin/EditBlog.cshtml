@@ -1,0 +1,28 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+<h2>@Model.Title</h2>
+
+<form method="post" asp-controller="Admin" asp-action="SaveBlog">
+    <input type="hidden" name="id" value="@Model.Id"/>
+    <div class="form-group">
+        <input type="text" name="blogTitle" value="@Model.Title" class="form-control"/>
+        <textarea id="Editor" name="blogcontent" class="form-control" rows="20">@Model.BlogContent</textarea>
+    </div>
+    <div class="text-center">
+        <button class="bt btn-primary  p-1 m-3" type="submit" value="">Save Blog</button>
+    </div>
+</form>
+
+@section Scripts
+{
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#Editor").summernote();
+        });
+    </script>
+}

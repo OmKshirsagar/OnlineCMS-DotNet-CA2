@@ -1,5 +1,21 @@
 ﻿@model Page
+@using OnlineCMS.Data
+@inject ApplicationDbContext _db;
+
 @{
     ViewData["Title"] = "Home Page";
 }
-@Html.Raw(Model.Content);
+@Html.Raw(Model.Content)
+<hr 0style="border: 1px dotted #FEA82F" />
+@{
+    List<Blog> blogs = _db.Blogs.ToList();
+    foreach (var blog in blogs.)
+    {
+        <li>
+            <a asp-controller="Admin" asp-action="EditBlog" asp-route-blogId=@blog.Id>
+                @blog.Title
+            </a>
+        </li>
+    }
+    // TODO add blogs to home
+}

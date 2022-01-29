@@ -1,0 +1,10 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = @Model.Title;
+}
+<div>
+    <h1>@Model.Title</h1>
+    <h6>@Model.CreatedDate</h6>
+</div>
+
+@Html.Raw(Model.BlogContent)

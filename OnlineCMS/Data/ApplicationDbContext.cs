@@ -15,5 +15,7 @@ namespace OnlineCMS.Data
         }
 
         public DbSet<Page> Pages { get; set; }
+
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
