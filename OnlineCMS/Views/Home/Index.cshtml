@@ -11,15 +11,17 @@
 <div class="container" id="BlogsItems">
     @{
         List<Blog> blogs = _db.Blogs.ToList();
+        blogs.Reverse();
         foreach (var blog in blogs)
         {
             <div class="container mb-2" style="border: 1px dotted #FEA82F"> 
                 <h3>@blog.Title</h3>
+                <small>@blog.CreatedDate</small>
                 <div class="collapse readmore" id="@blog.Id" aria-expanded="false">
                     @Html.Raw(blog.BlogContent)
                 </div>
                 <div class="mb-1">
-                    <a class="btn btn-primary" asp-controller="Home" asp-action="Blog" asp-route-blogId=@blog.Id>
+                    <a class="btn button btn-primary" asp-controller="Home" asp-action="Blog" asp-route-blogId=@blog.Id>
                         read more
                     </a>
                 </div>

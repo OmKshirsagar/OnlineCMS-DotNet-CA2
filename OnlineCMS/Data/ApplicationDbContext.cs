@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnlineCMS.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineCMS.Data
 {

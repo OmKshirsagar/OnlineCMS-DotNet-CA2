@@ -6,11 +6,11 @@
 }
 <div class="container row">
     <h1 class="container col-10">@ViewData["Title"]</h1>
-    <a class="btn btn-primary col-2 text-capitalize" asp-controller="Admin" asp-action="CreateBlog">Create Blog</a>
+    <a class="btn btn-primary button col-2 text-capitalize" style="font-size: 1.5rem" asp-controller="Admin" asp-action="CreateBlog">Create Blog</a>
 </div>
 
 <div class="container">
-    <button class="btn-primary btn" type="button" data-toggle="collapse" 
+    <button class="btn-primary btn button" type="button" data-toggle="collapse" 
             data-target="#pageItems" aria-expanded="true" aria-controls="pageItems">Pages</button>
     <ul id="pageItems">
         <li><a asp-controller="Admin" asp-action="EditPage" asp-route-title="Home">Home</a></li>
@@ -22,11 +22,12 @@
 </div>
 
 <div class="container text-capitalize mt-2">
-    <button class="btn-primary btn" type="button" data-toggle="collapse" 
+    <button class="btn-primary btn button" type="button" data-toggle="collapse" 
             data-target="#BlogsItems" aria-expanded="true" aria-controls="BlogsItems">Blogs</button>
     <ul id="BlogsItems" style="text-decoration: none">
         @{
             List<Blog> blogs = _db.Blogs.ToList();
+            blogs.Reverse();
             foreach (var blog in blogs)
             {
                 <li>
