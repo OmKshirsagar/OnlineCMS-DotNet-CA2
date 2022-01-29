@@ -30,7 +30,7 @@ namespace OnlineCMS.Controllers
         public IActionResult Privacy()
         {
             var page = _db.Pages.FirstOrDefault(x => x.Title == "PrivacyPolicy");
-            return View();
+            return View(page);
         }
 
         public IActionResult Blog(int blogId)

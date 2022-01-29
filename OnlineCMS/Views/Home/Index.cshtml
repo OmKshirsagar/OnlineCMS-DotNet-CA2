@@ -13,12 +13,12 @@
         List<Blog> blogs = _db.Blogs.ToList();
         foreach (var blog in blogs)
         {
-            <div class="container border mb-2"> 
+            <div class="container mb-2" style="border: 1px dotted #FEA82F"> 
                 <h3>@blog.Title</h3>
                 <div class="collapse readmore" id="@blog.Id" aria-expanded="false">
                     @Html.Raw(blog.BlogContent)
                 </div>
-                <div>
+                <div class="mb-1">
                     <a class="btn btn-primary" asp-controller="Home" asp-action="Blog" asp-route-blogId=@blog.Id>
                         read more
                     </a>
@@ -37,11 +37,11 @@
         }
         #BlogsItems .readmore.collapse:not(.show) {
             display: block;
-            height: 3rem;
+            height: 5rem;
             overflow: hidden;
         }
         #BlogsItems .readmore.collapsing {
-            height: 3rem;
+            height: 5rem;
         }
     </style>
 }
